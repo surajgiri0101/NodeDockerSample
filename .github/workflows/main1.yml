@@ -15,9 +15,11 @@ jobs:
       - name: Login to GitHub Packages
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GIT_TOKEN }}
+            image: image-name
+            registry: ghcr.io
+            githubOrg: override-org # optional
+            username: ${{ secrets.GHCR_USERNAME }}
+            password: ${{ secrets.GHCR_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
